@@ -25,9 +25,11 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    const url = 'http://localhost:8080/categorias';
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://gambiflix.herokuapp.com/categorias';
 
-    fetch(url)
+    fetch(URL)
       .then(async (serverResponse) => {
         const response = await serverResponse.json();
         setCategorias([
